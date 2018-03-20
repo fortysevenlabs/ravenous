@@ -1,6 +1,5 @@
 import React from 'react';
 import './BusinessList.css';
-// should path be "../Business/{Business or Business.js}"
 import Business from '../Business/Business';
 
 class BusinessList extends React.Component {

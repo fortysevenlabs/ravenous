@@ -1,19 +1,22 @@
 import React from 'react';
 import './SearchBar.css';
 
-class SearchBar extends React.Component {
-    sortByOptions = {
-        'Best Match': 'best_match',
-        'Highest Reviewed': 'rating' ,
-        'Most Reviewed': 'review_count',
-    };
+// I am constantly making the mistake
+// of defining this const object in the
+// Component Class
+const sortByOptions = {
+    'Best Match': 'best_match',
+    'Highest Rated': 'rating',
+    'Most Reviewed': 'review_count'
+}
 
-    renderSortByOptions(sortByOptions) {
-        Object.keys(sortByOptions).map(sortByOption => {
-            console.log(sortyByOption);
+class SearchBar extends React.Component {
+
+    renderSortByOptions() {
+        return Object.keys(sortByOptions).map(sortByOption => {
             let sortByOptionValue = sortByOptions[sortByOption];
             // how would it return three times?
-            return <li key={sortByOptionValue}> {sortByOption} </li>
+            <li key={sortByOptionValue}> {sortByOption} </li>
         });
 
     };
@@ -24,7 +27,7 @@ class SearchBar extends React.Component {
             <div class="SearchBar">
                 <div class="SearchBar-sort-options">
                 <ul>
-                    <!-- Use .renderSortByOptions() to sort the businesses by their options -->
+                    {/* <!-- Use .renderSortByOptions() to sort the businesses by their options --> */}
                     {this.renderSortByOptions()}
                 </ul>
             </div>
