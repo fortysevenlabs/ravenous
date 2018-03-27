@@ -20,7 +20,7 @@ let businesses = [business, business, business, business, business, business];
 class App extends Component {
   render() {
     return (
-        <div class="App">
+        <div className="App">
             <h1>ravenous</h1>
             {/* <!-- Add SearchBar component here --> */}
             <SearchBar />
