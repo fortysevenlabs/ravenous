@@ -69,6 +69,12 @@ class SearchBar extends React.Component {
 			e.preventDefault();
 		}
 
+	  // Note regarding onClick being bound directly
+	  // with params here instead of constructor
+		// This will allow us to both bind to the current value of this
+	  // (as we usually do in the constructor()) but also bind the current
+	  // sortByOptionValue as the first argument to the method call, ensuring
+	  // the method is called with the appropriate value when clicked.
     renderSortByOptions() {
         return Object.keys(this.sortByOptions).map(sortByOption => {
             let sortByOptionValue = this.sortByOptions[sortByOption];
