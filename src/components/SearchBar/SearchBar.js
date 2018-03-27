@@ -9,7 +9,8 @@ class SearchBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {term: '', location: '', sortBy: 'best_match'};
-	      this.handleSortByChange = this.handleSortByChange.bind(this);
+        // binded with params in event handler instead
+	      // this.handleSortByChange = this.handleSortByChange.bind(this);
 				this.handleTermChange = this.handleTermChange.bind(this);
 				this.handleLocationChange = this.handleLocationChange.bind(this);
 				this.handleSearch = this.handleSearch.bind(this);
@@ -30,13 +31,19 @@ class SearchBar extends React.Component {
 			return this.state.sortBy === sortByOption ? 'active' : '';
 		}
 
-		// fix this per instruction #9
-		handleSortByChange(e) {
-    	const newSortByOption = this.sortByOptions[e.target.innerHTML.trim()];
+		handleSortByChange(sortOptionByValue) {
 			this.setState({
-				sortBy: newSortByOption
+				sortBy: sortOptionByValue
 			});
 		}
+
+		// binded with params in event handler, using above method
+		// handleSortByChange(e) {
+		//  const newSortByOption = this.sortByOptions[e.target.innerHTML.trim()];
+		// 	this.setState({
+		// 		sortBy: newSortByOption
+		// 	});
+		// }
 
 		handleTermChange(e){
     	const newTerm = e.target.value;
@@ -67,7 +74,7 @@ class SearchBar extends React.Component {
             let sortByOptionValue = this.sortByOptions[sortByOption];
             return <li key={sortByOptionValue}
                        className={this.getSortByClass(sortByOptionValue)}
-                       onClick={this.handleSortByChange}>
+                       onClick={this.handleSortByChange.bind(this, sortByOptionValue)}>
 	                   {sortByOption}
                    </li>
         });
