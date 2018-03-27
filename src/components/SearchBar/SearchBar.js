@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
         return Object.keys(sortByOptions).map(sortByOption => {
             let sortByOptionValue = sortByOptions[sortByOption];
             // how would it return three times?
-            <li key={sortByOptionValue}> {sortByOption} </li>
+            return <li key={sortByOptionValue}> {sortByOption} </li>
         });
 
     };
