@@ -11,9 +11,9 @@ class SearchBar extends React.Component {
         this.state = {term: '', location: '', sortBy: 'best_match'};
         // binded with params in event handler instead
 	      // this.handleSortByChange = this.handleSortByChange.bind(this);
-				this.handleTermChange = this.handleTermChange.bind(this);
-				this.handleLocationChange = this.handleLocationChange.bind(this);
-				this.handleSearch = this.handleSearch.bind(this);
+	      this.handleTermChange = this.handleTermChange.bind(this);
+	      this.handleLocationChange = this.handleLocationChange.bind(this);
+	      this.handleSearch = this.handleSearch.bind(this);
     }
 
 		// I am constantly making the mistake
