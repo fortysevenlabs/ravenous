@@ -18,12 +18,20 @@ let business = {
 let businesses = [business, business, business, business, business, business];
 
 class App extends Component {
+
+	// why shouldn't this live closer to the Lets Go button i.e in SearchBar Component
+	// how does having methods in Parent Component benefit react
+	// ... understand better ... !!!
+	searchYelp(term, location, sortBy) {
+		console.log("The search is: " + term + ", " + location + ", " + sortBy);
+	}
+
   render() {
     return (
         <div className="App">
             <h1>ravenous</h1>
             {/* <!-- Add SearchBar component here --> */}
-            <SearchBar />
+            <SearchBar searchYelp={this.searchYelp} />
             {/* <!-- Add BusinessList component here --> */}
             <BusinessList businesses={businesses} />
         </div>
