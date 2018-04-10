@@ -2,31 +2,27 @@ import React from 'react';
 import './SearchBar.css';
 
 
-
 class SearchBar extends React.Component {
-    // why did we add a constructor?
-    // because we'll be setting state
+    // why did we add a constructor? because
+		// * we'll be setting state in this component
+	  // * we'll be binding a few function to this
     constructor(props) {
         super(props);
         this.state = {term: '', location: '', sortBy: 'best_match'};
-        // binded with params in event handler instead
+        // binded with params, see renderSortByOption
 	      // this.handleSortByChange = this.handleSortByChange.bind(this);
 	      this.handleTermChange = this.handleTermChange.bind(this);
 	      this.handleLocationChange = this.handleLocationChange.bind(this);
 	      this.handleSearch = this.handleSearch.bind(this);
     }
 
-		// I am constantly making the mistake
-		// of defining this const object in the
-		// Component Class
-		// Why was this a global variable before?
 		sortByOptions = {
 			'Best Match': 'best_match',
 			'Highest Rated': 'rating',
 			'Most Reviewed': 'review_count'
 		}
 
-		// return css class for selected sorting option
+		// return css class for selected sortBy option
 		getSortByClass(sortByOption) {
 			return this.state.sortBy === sortByOption ? 'active' : '';
 		}
@@ -37,7 +33,7 @@ class SearchBar extends React.Component {
 			});
 		}
 
-		// binded with params in event handler, using above method
+		// binded with params, see renderSortByOption
 		// handleSortByChange(e) {
 		//  const newSortByOption = this.sortByOptions[e.target.innerHTML.trim()];
 		// 	this.setState({
@@ -93,8 +89,8 @@ class SearchBar extends React.Component {
             <div className="SearchBar">
                 <div className="SearchBar-sort-options">
                 <ul>
-                    {/* <!-- Use .renderSortByOptions() to sort the businesses by their options --> */}
-                    {this.renderSortByOptions()}
+	                {/* You want to execute this function, hence you call with () */}
+	                {this.renderSortByOptions()}
                 </ul>
             </div>
             <div className="SearchBar-fields">
@@ -102,7 +98,13 @@ class SearchBar extends React.Component {
                 <input placeholder="Where?" onChange={this.handleLocationChange} />
                 </div>
                 <div className="SearchBar-submit">
-                    <a onClick={this.handleSearch}>Let's Go</a>
+	                {/*
+	                  * You don't want to execute the function when not using ()
+	                  * You don't want functions mapped to event handlers being triggered when the code is encountered
+	                  * So, you are telling to use handleSearch (a reference to the function) when this event triggers
+	                function when the event happens.
+	                */}
+	                <a onClick={this.handleSearch}>Let's Go</a>
                 </div>
             </div>
         );
